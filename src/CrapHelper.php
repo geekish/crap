@@ -92,6 +92,7 @@ class CrapHelper
     public function setAlias($alias, $package)
     {
         $this->file->set($alias, $package);
+        $this->file->sort();
     }
 
     /**
