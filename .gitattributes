@@ -8,6 +8,7 @@
 /.travis.yml export-ignore
 /.scrutinizer.yml export-ignore
 /.styleci.yml export-ignore
+/bin/test export-ignore
 /example.gif export-ignore
 /phpcs.xml export-ignore
 /phpunit.xml.dist export-ignore

@@ -1,0 +1,8 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * Run this script from project root to test
+ */
+putenv(sprintf("COMPOSER_HOME=%s", dirname(__DIR__) . "/.crap"));
+include __DIR__ . "/crap.php";
