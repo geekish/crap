@@ -71,7 +71,11 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 
 ## Testing
 
-Soon.
+After a composer install, to run the unit tests via `phpunit`:
+
+``` bash
+composer test
+```
 
 ## Contributing
 
