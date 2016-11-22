@@ -67,7 +67,7 @@ class CrapHelperTest extends TestCase
     {
         $actual = $this->helper->getAliases();
 
-        $this->assertEquals(["phpcs", "mockery", "monolog", "phpunit"], $actual);
+        $this->assertEquals(["mockery", "monolog", "phpcs", "phpunit"], $actual);
     }
 
     public function testHasAlias()
