@@ -45,8 +45,7 @@
         "fixcs": "./vendor/bin/phpcbf"
     },
     "bin": [
-        "bin/crap",
-        "bin/crap.php"
+        "bin/crap"
     ],
     "config": {
         "sort-packages": true
