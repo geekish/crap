@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<ruleset name="crap coding standard">
+    <description>crap coding standard</description>
+    <arg value="p"/><!-- display progress -->
+    <arg name="colors"/><!-- make it pretty -->
+    <rule ref="PSR2"/>
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+    <file>src</file>
+    <file>tests</file>
+</ruleset>

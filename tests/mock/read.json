@@ -1,0 +1,6 @@
+{
+    "phpcs": "squizlabs/php_codesniffer:*",
+    "mockery": "mockery/mockery",
+    "monolog": "monolog/monolog",
+    "phpunit": "phpunit/phpunit:^5.0"
+}
