@@ -19,7 +19,7 @@ final class Crap extends Application
      * Crap application version
      * @var string
      */
-    const VERSION = "0.1.0-beta";
+    const VERSION = "1.0.0-beta";
 
     private static $logo = '   __________  ___    ____
   / ____/ __ \/   |  / __ \
