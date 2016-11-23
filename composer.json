@@ -1,7 +1,7 @@
 {
     "name": "geekish/crap",
     "type": "library",
-    "description": "",
+    "description": "Define aliases for your favorite Composer packages.",
     "keywords": [
         "geekish",
         "crap"
