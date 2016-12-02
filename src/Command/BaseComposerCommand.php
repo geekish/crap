@@ -66,7 +66,7 @@ abstract class BaseComposerCommand extends BaseCommand
         return (new ProcessBuilder)
             ->setPrefix("composer")
             ->setArguments($arguments)
-            ->setTimeout(null);
+            ->setTimeout(null)
             ->getProcess();
     }
 }
