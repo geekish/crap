@@ -63,7 +63,7 @@ Oh, the name?
 I was going to call it `cra`, and call the main class `Crapp`.
 Then I thought of the acronym, and it was just too good not to use.
 
-Yes, it is totally inspired by Spongebob's [POOP][link-poop].
+Yes, it is totally inspired by Spongebob's [POOP].
 
 ## Change log
 
@@ -87,9 +87,9 @@ If you discover any security related issues, please email hannahwarmbier@gmail.c
 
 ## Credits
 
-- [asciinema](//asciinema.org/) & [asciinema2gif](//github.com/tav/asciinema2gif) - for the terminal recording
-- [consolidation/cgr][link-cgr] - for the inspiration to write this.
-- [Contributors][link-contributors]
+- [asciinema] & [asciinema2gif] - for the terminal recording
+- [consolidation/cgr] - for the inspiration to write this.
+- [Contributors]
 
 ## License
 
@@ -97,12 +97,22 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 [ico-version]: https://img.shields.io/packagist/v/geekish/crap.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/geekish/crap/master.svg?style=flat-square
+[ico-coveralls]: https://coveralls.io/repos/github/geekish/crap/badge.svg
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/geekish/crap.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/geekish/crap.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/geekish/crap
+[link-travis]: //travis-ci.org/geekish/crap
+[link-coveralls]: //coveralls.io/github/geekish/crap
+[link-code-quality]: //scrutinizer-ci.com/g/geekish/crap
 [link-downloads]: https://packagist.org/packages/geekish/crap
-[link-contributors]: ../../contributors
 
-[link-cgr]: //github.com/consolidation/cgr
 [link-composer-docs]: //getcomposer.org/doc/03-cli.md
-[link-poop]: //poop.urbanup.com/340199#.WC3kAiMiBbo.twitter
+
+[contributors]: ../../contributors
+
+[asciinema]: //asciinema.org/
+[asciinema2gif]: //github.com/tav/asciinema2gif
+[consolidation/cgr]: //github.com/consolidation/cgr
+[poop]: //poop.urbanup.com/340199#.WC3kAiMiBbo.twitter

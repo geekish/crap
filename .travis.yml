@@ -23,14 +23,10 @@ before_script:
 
 script:
   - vendor/bin/phpcs
-  - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+  - vendor/bin/phpunit --coverage-text --coverage-clover=clover.xml
 
 after_script:
-  - |
-    if [[ "$TRAVIS_PHP_VERSION" != 'hhvm' && "$TRAVIS_PHP_VERSION" != '7.0' ]]; then
-      wget https://scrutinizer-ci.com/ocular.phar
-      php ocular.phar code-coverage:upload --format=php-clover coverage.clover
-    fi
+  - travis_retry php vendor/bin/coveralls --coverage_clover=clover.xml
 
 notifications:
   email: false
