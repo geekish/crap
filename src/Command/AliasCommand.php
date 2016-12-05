@@ -48,6 +48,8 @@ final class AliasCommand extends BaseCommand
             );
         }
 
+        $override = false;
+
         if ($this->helper->hasAlias($alias)) {
             $current = $this->helper->getAlias($alias);
 
@@ -62,20 +64,29 @@ final class AliasCommand extends BaseCommand
 
             $helper = $this->getHelper("question");
 
-            $ask = sprintf("Replace existing alias to `%s` with `%s`? (y/n) ", $alias, $package);
+            $output->writeln(sprintf(
+                "<comment>Alias `%s` exists and is set to `%s`.</comment>",
+                $alias,
+                $current
+            ));
+
+            $ask = sprintf("Override alias `%s` with `%s`? (y/n) ", $alias, $package);
             $question = new ConfirmationQuestion($ask, false);
 
             if (!$helper->ask($input, $output, $question)) {
                 return 0;
             }
+
+            $override = true;
         }
 
         $this->helper->setAlias($alias, $package);
 
         $output->writeln(sprintf(
-            "<success>Alias `%s` to package `%s` successfully added.</success>",
+            "<success>Alias `%s` to package `%s` successfully %s.</success>",
             $alias,
-            $package
+            $package,
+            $override ? "updated" : "added"
         ));
 
         return 0;
