@@ -17,7 +17,6 @@ final class ListAliasesCommand extends BaseCommand
     protected function configure()
     {
         $this->setName("aliases");
-        $this->setAliases(["list-aliases"]);
         $this->setDescription("List currently defined aliases");
     }
 

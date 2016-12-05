@@ -20,7 +20,6 @@ final class AliasCommand extends BaseCommand
     protected function configure()
     {
         $this->setName("alias");
-        $this->setAliases(["define"]);
         $this->setDescription("Defines an alias for a package to be used by crap.");
         $this->addArgument("alias", InputArgument::REQUIRED, "Package alias");
         $this->addArgument("package", InputArgument::REQUIRED, "Package");
