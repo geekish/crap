@@ -7,6 +7,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
+use Symfony\Component\Console\Question\Question;
 
 /**
  * Class AliasCommand
@@ -89,5 +90,52 @@ final class AliasCommand extends BaseCommand
         ));
 
         return 0;
+    }
+
+    protected function interact(InputInterface $input, OutputInterface $output)
+    {
+        $args = array_values($input->getArguments());
+
+        $helper = $this->getHelper("question");
+
+        if ($args[2] == null && $this->helper->validatePackage($args[1]) === true) {
+            $package = $args[1];
+
+            $output->writeln("<comment>You provided the package but no alias!</comment>");
+
+            $message = sprintf("<question>What do you want to use an an alias for `%s`?</question>", $package);
+            $question = new Question($message . PHP_EOL, false);
+
+            $alias = $helper->ask($input, $output, $question);
+
+            $input->setArgument("alias", $alias);
+            $input->setArgument("package", $package);
+        } elseif ($args[2] == null && $this->helper->validateAlias($args[1])) {
+            $alias = $args[1];
+
+            $output->writeln("<info>You provided the alias but no package!</info>");
+
+            $message = sprintf("<question>What package do you want to alias `%s` to?</question>", $alias);
+            $question = new Question($message . PHP_EOL, false);
+
+            $package = $helper->ask($input, $output, $question);
+
+            $input->setArgument("package", $package);
+        } elseif ($this->helper->validateAlias($args[2]) && $this->helper->validatePackage($args[1])) {
+            $output->writeln("<info>It looks like you swapped the package and alias.</info>");
+
+            $message = sprintf(
+                "<question>Did you mean to alias `%s` to package `%s`?</question> (y/n) ",
+                $args[2],
+                $args[1]
+            );
+
+            $question = new ConfirmationQuestion($message, false);
+
+            if ($helper->ask($input, $output, $question)) {
+                $input->setArgument("alias", $args[2]);
+                $input->setArgument("package", $args[1]);
+            }
+        }
     }
 }
