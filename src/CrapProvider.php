@@ -77,6 +77,7 @@ class CrapProvider implements ProviderInterface
                 $crap->addCommands([
                     new Command\ListAliasesCommand($helper),
                     new Command\AliasCommand($helper),
+                    new Command\InfoCommand($helper),
                     new Command\UnaliasCommand($helper),
                     new Command\RequireCommand($helper),
                     new Command\UpdateCommand($helper),
