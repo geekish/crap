@@ -92,6 +92,10 @@ final class AliasCommand extends BaseCommand
         return 0;
     }
 
+    /**
+     * @inheritDoc
+     * @codeCoverageIgnore
+     */
     protected function interact(InputInterface $input, OutputInterface $output)
     {
         $args = array_values($input->getArguments());
