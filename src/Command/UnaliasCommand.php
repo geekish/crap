@@ -2,8 +2,9 @@
 
 namespace Geekish\Crap\Command;
 
-use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -20,6 +21,12 @@ final class UnaliasCommand extends BaseCommand
         $this->setName("unalias");
         $this->setDescription("Unset an existing crap alias.");
         $this->addArgument("alias", InputArgument::REQUIRED, "Package alias");
+        $this->addOption(
+            "dry-run",
+            null,
+            InputOption::VALUE_NONE,
+            "Run command without writing to your `crap.json`, useful for testing."
+        );
     }
 
     /**
@@ -30,7 +37,9 @@ final class UnaliasCommand extends BaseCommand
         $alias = $input->getArgument("alias");
 
         if ($this->helper->hasAlias($alias)) {
-            $this->helper->unsetAlias($alias);
+            if ($input->getOption("dry-run") !== true) {
+                $this->helper->unsetAlias($alias);
+            }
 
             $output->writeln(sprintf(
                 "<success>Alias `%s` successfully removed.</success>",

@@ -15,6 +15,7 @@ abstract class BaseComposerCommand extends BaseCommand
     /**
      * Return options that are NOT default
      * We don't want to call Composer commands with every possible option set...
+     * @codeCoverageIgnore
      *
      * @param InputInterface $input
      * @param bool $decorated
@@ -41,6 +42,7 @@ abstract class BaseComposerCommand extends BaseCommand
 
     /**
      * Create Process for Composer command
+     * @codeCoverageIgnore
      *
      * @param $command
      * @param array $packages

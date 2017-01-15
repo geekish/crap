@@ -13,6 +13,9 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Output\OutputInterface;
 use Webmozart\KeyValueStore\JsonFileStore;
 
+/**
+ * @codeCoverageIgnore
+ */
 class CrapProvider implements ProviderInterface
 {
     /** @var string */
@@ -28,6 +31,9 @@ class CrapProvider implements ProviderInterface
         $this->composerHome = $composerHome;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function register(ContainerFactory $factory)
     {
         $composerHome = $this->composerHome;

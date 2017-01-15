@@ -7,6 +7,10 @@ use Webmozart\KeyValueStore\JsonFileStore;
 
 abstract class TestCase extends \PHPUnit_Framework_TestCase
 {
+    protected $readFile = __DIR__ . "/mock/read.json";
+    protected $writeFile = __DIR__ . "/mock/write.json";
+    protected $setFile = __DIR__ . "/mock/meow.json";
+
     protected function createContainer()
     {
         $factory = new ContainerFactory;

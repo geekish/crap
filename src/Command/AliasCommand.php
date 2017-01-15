@@ -5,6 +5,7 @@ namespace Geekish\Crap\Command;
 use Geekish\Crap\CrapException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
 use Symfony\Component\Console\Question\Question;
@@ -24,6 +25,12 @@ final class AliasCommand extends BaseCommand
         $this->setDescription("Defines an alias for a package to be used by crap.");
         $this->addArgument("alias", InputArgument::REQUIRED, "Package alias");
         $this->addArgument("package", InputArgument::REQUIRED, "Package");
+        $this->addOption(
+            "dry-run",
+            null,
+            InputOption::VALUE_NONE,
+            "Run command without writing to your `crap.json`, useful for testing."
+        );
     }
 
     /**
@@ -80,7 +87,9 @@ final class AliasCommand extends BaseCommand
             $override = true;
         }
 
-        $this->helper->setAlias($alias, $package);
+        if ($input->getOption("dry-run") !== true) {
+            $this->helper->setAlias($alias, $package);
+        }
 
         $output->writeln(sprintf(
             "<success>Alias `%s` to package `%s` successfully %s.</success>",
@@ -94,7 +103,6 @@ final class AliasCommand extends BaseCommand
 
     /**
      * @inheritDoc
-     * @codeCoverageIgnore
      */
     protected function interact(InputInterface $input, OutputInterface $output)
     {

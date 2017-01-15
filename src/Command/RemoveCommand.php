@@ -13,6 +13,9 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 final class RemoveCommand extends BaseComposerCommand
 {
+    /**
+     * @inheritDoc
+     */
     protected function configure()
     {
         $this->setName("remove");
@@ -26,6 +29,10 @@ final class RemoveCommand extends BaseComposerCommand
         }
     }
 
+    /**
+     * @inheritDoc
+     * @codeCoverageIgnore
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $packages = $this->helper->parseArguments($input->getArgument("aliases"), true);

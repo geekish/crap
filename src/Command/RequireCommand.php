@@ -31,6 +31,7 @@ final class RequireCommand extends BaseComposerCommand
 
     /**
      * @inheritDoc
+     * @codeCoverageIgnore
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
