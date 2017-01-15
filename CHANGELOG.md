@@ -2,6 +2,12 @@
 
 All notable changes to `geekish/crap` will be documented in this file and follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## 1.0.0-beta.4 - TBD
+
+### Changed
+
+- Interaction on `alias` command when the second argument is an existing alias.
+
 ## 1.0.0-beta.3 - 2017-01-08
 
 ### Added

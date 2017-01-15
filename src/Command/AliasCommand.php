@@ -140,6 +140,22 @@ final class AliasCommand extends BaseCommand
                 $input->setArgument("alias", $args[2]);
                 $input->setArgument("package", $args[1]);
             }
+        } elseif ($this->helper->validateAlias($args[1]) && $this->helper->hasAlias($args[2])) {
+            $output->writeln("<info>You provided an existing alias instead of a package.</info>");
+
+            $existing = $this->helper->getAlias($args[2]);
+
+            $message = sprintf(
+                "<question>Do you want to alias `%s` to `%s`?</question> (y/n) ",
+                $args[1],
+                $existing
+            );
+
+            $question = new ConfirmationQuestion($message, false);
+
+            if ($helper->ask($input, $output, $question)) {
+                $input->setArgument("package", $existing);
+            }
         }
     }
 }
