@@ -80,8 +80,6 @@ class AliasCommandTest extends TestCase
 
     public function testInteractMissingAlias()
     {
-        $tester = new CommandTester($this->command);
-
         $alias = "phpunit";
         $package = "phpunit/phpunit";
 
@@ -124,8 +122,6 @@ class AliasCommandTest extends TestCase
 
     public function testInteractMissingPackage()
     {
-        $tester = new CommandTester($this->command);
-
         $alias = "phpunit";
         $package = "phpunit/phpunit";
 
@@ -168,8 +164,6 @@ class AliasCommandTest extends TestCase
 
     public function testInteractSwappedArguments()
     {
-        $tester = new CommandTester($this->command);
-
         $alias = "phpunit";
         $package = "phpunit/phpunit";
 
@@ -212,8 +206,6 @@ class AliasCommandTest extends TestCase
 
     public function testInteractAliasToExistingAlias()
     {
-        $tester = new CommandTester($this->command);
-
         $alias = "foo";
         $existing = "alias";
         $package = $this->helper->getAlias($existing);

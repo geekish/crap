@@ -4,10 +4,8 @@ namespace Geekish\Crap\Command;
 
 use Geekish\Crap\Crap;
 use Geekish\Crap\CrapHelper;
-use Geekish\Crap\CrapException;
 use Geekish\Crap\TestCase;
 use Symfony\Component\Console\Exception\RuntimeException;
-use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Tester\CommandTester;
 
 /**
