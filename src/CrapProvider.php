@@ -47,6 +47,7 @@ class CrapProvider implements ProviderInterface
             function (ConsoleOutput $output) {
                 $output->getFormatter()->setStyle("error", new OutputFormatterStyle("red", null, []));
                 $output->getFormatter()->setStyle("success", new OutputFormatterStyle("green", null, []));
+                return $output;
             }
         );
 
