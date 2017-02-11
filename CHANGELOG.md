@@ -2,11 +2,19 @@
 
 All notable changes to `geekish/crap` will be documented in this file and follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## 1.0.0-beta.4 - TBD
+## 1.0.0-beta.4 - 2017-02-11
+
+### Added
+
+- Add `—dry-run` option to `alias`, `unalias` for testing.
 
 ### Changed
 
 - Interaction on `alias` command when the second argument is an existing alias.
+
+### Fixed
+
+- Improved code coverage
 
 ## 1.0.0-beta.3 - 2017-01-08
 
