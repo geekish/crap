@@ -4,6 +4,10 @@ namespace Geekish\Crap;
 
 use Exception;
 
+/**
+ * Class CrapHelperTest
+ * @package Geekish\Crap
+ */
 class CrapHelperTest extends TestCase
 {
     /** @var CrapHelper */

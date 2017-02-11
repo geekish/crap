@@ -22,8 +22,6 @@ class CrapProvider implements ProviderInterface
     private $composerHome;
 
     /**
-     * Create CrapHelperFactory
-     *
      * @param string $composerHome
      */
     public function __construct($composerHome)

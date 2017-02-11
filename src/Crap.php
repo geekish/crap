@@ -44,6 +44,9 @@ final class Crap extends Application
         return self::$logo . parent::getHelp();
     }
 
+    /**
+     * @inheritDoc
+     */
     public function run(InputInterface $input = null, OutputInterface $output = null)
     {
         $this->setCatchExceptions(false);

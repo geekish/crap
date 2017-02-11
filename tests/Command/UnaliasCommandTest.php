@@ -10,6 +10,10 @@ use Symfony\Component\Console\Exception\RuntimeException;
 use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Tester\CommandTester;
 
+/**
+ * Class UnaliasCommandTest
+ * @package Geekish\Crap\Command
+ */
 class UnaliasCommandTest extends TestCase
 {
     /** @var CrapHelper */

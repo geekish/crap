@@ -14,6 +14,9 @@ abstract class BaseCommand extends Command
     /** @var CrapHelper */
     protected $helper;
 
+    /**
+     * @param CrapHelper $helper
+     */
     public function __construct(CrapHelper $helper)
     {
         $this->helper = $helper;

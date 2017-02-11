@@ -4,6 +4,10 @@ namespace Geekish\Crap;
 
 use Symfony\Component\Console\Output\BufferedOutput;
 
+/**
+ * Class ExceptionHandlerTest
+ * @package Geekish\Crap
+ */
 class ExceptionHandlerTest extends TestCase
 {
     public function testOutput()

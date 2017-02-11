@@ -9,6 +9,10 @@ use Geekish\Crap\TestCase;
 
 use Symfony\Component\Console\Tester\CommandTester;
 
+/**
+ * Class RequireCommandTest
+ * @package Geekish\Crap\Command
+ */
 class RequireCommandTest extends TestCase
 {
     /** @var CommandTester */

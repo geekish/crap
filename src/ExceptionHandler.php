@@ -6,6 +6,10 @@ use Exception;
 use Throwable;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Class ExceptionHandler
+ * @package Geekish\Crap
+ */
 class ExceptionHandler
 {
     /**
