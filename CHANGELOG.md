@@ -2,6 +2,12 @@
 
 All notable changes to `geekish/crap` will be documented in this file and follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## 1.0.0 - 2017-02-15
+
+### Changed
+
+- Nothing; stable version bump
+
 ## 1.0.0-beta.4 - 2017-02-11
 
 ### Added
