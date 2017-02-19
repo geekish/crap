@@ -125,7 +125,7 @@ class CrapHelper
      */
     public function validateAlias($alias)
     {
-        return preg_match("{^[a-z0-9_.-]+$}", $alias) ? true : false;
+        return (bool) preg_match("{^[a-z0-9_.-]+$}", $alias);
     }
 
     /**
