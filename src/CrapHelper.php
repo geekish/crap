@@ -125,7 +125,7 @@ class CrapHelper
      */
     public function validateAlias($alias)
     {
-        return preg_match("{^[a-z0-9_.-]+$}", $alias) ? true : false;
+        return (bool) preg_match("{^[a-z0-9_.-]+$}", $alias);
     }
 
     /**
@@ -169,12 +169,9 @@ class CrapHelper
      */
     public function parseArguments(array $arguments, $excludeVersions = false)
     {
-        $require = [];
-
-        foreach ($arguments as $arg) {
+        return array_map(function ($arg) use ($excludeVersions) {
             if ($this->validatePackage($arg)) {
-                $require[] = $arg;
-                continue;
+                return $arg;
             }
 
             list($alias, $argVersion) = $this->parsePackageToArray($arg);
@@ -188,13 +185,11 @@ class CrapHelper
             $version = null;
 
             if (!$excludeVersions) {
-                $version = !is_null($argVersion) ? $argVersion : $packageVersion;
+                $version = $argVersion ?: $packageVersion;
             }
 
-            $require[] = ($version === null) ? $package : sprintf("%s:%s", $package, $version);
-        }
-
-        return $require;
+            return (is_null($version)) ? $package : sprintf('%s:%s', $package, $version);
+        }, $arguments);
     }
 
     /**
