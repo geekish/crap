@@ -19,7 +19,7 @@ class UnaliasCommandTest extends TestCase
     /** @var AliasCommand */
     private $command;
 
-    public function setUp()
+    protected function setUp()
     {
         $container = $this->createContainer();
         $helper = $container->get(CrapHelper::class);

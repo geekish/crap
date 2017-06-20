@@ -18,7 +18,7 @@ class RequireCommandTest extends TestCase
     /** @var CommandTester */
     private $tester;
 
-    public function setUp()
+    protected function setUp()
     {
         $container = $this->createContainer();
         $helper = $container->get(CrapHelper::class);
