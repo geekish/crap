@@ -2,6 +2,7 @@
 
 namespace Geekish\Crap;
 
+use PHPUnit\Framework\TestCase as BaseTestCase;
 use mindplay\unbox\ContainerFactory;
 use Webmozart\KeyValueStore\JsonFileStore;
 
@@ -9,7 +10,7 @@ use Webmozart\KeyValueStore\JsonFileStore;
  * Class TestCase
  * @package Geekish\Crap
  */
-abstract class TestCase extends \PHPUnit_Framework_TestCase
+abstract class TestCase extends BaseTestCase
 {
     protected $readFile = __DIR__ . "/mock/read.json";
     protected $writeFile = __DIR__ . "/mock/write.json";
