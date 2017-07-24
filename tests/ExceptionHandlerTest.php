@@ -15,7 +15,7 @@ class ExceptionHandlerTest extends TestCase
         $output = new BufferedOutput;
         $handler = new ExceptionHandler($output);
 
-        $message = "Error!";
+        $message = 'Error!';
 
         $exception = CrapException::create($message);
 

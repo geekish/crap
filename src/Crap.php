@@ -13,13 +13,13 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 final class Crap extends Application
 {
-    const FILENAME = "crap.json";
+    const FILENAME = 'crap.json';
 
     /**
      * Crap application version
      * @var string
      */
-    const VERSION = "1.0.0";
+    const VERSION = '1.0.0';
 
     private static $logo = '   __________  ___    ____
   / ____/ __ \/   |  / __ \
@@ -33,7 +33,7 @@ final class Crap extends Application
      */
     public function __construct()
     {
-        parent::__construct("crap", self::VERSION);
+        parent::__construct('crap', self::VERSION);
     }
 
     /**

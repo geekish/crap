@@ -38,15 +38,15 @@ class UnaliasCommandTest extends TestCase
     {
         $tester = new CommandTester($this->command);
 
-        $alias = "foo";
-        $package = "bar/baz";
+        $alias = 'foo';
+        $package = 'bar/baz';
 
         $this->helper->setAlias($alias, $package);
 
         $tester->execute([
-            "command" => $this->command->getName(),
-            "alias" => $alias,
-            "--dry-run" => false,
+            'command' => $this->command->getName(),
+            'alias' => $alias,
+            '--dry-run' => false,
         ]);
 
         $this->assertFalse($this->helper->hasAlias($alias));
@@ -56,16 +56,16 @@ class UnaliasCommandTest extends TestCase
     {
         $tester = new CommandTester($this->command);
 
-        $alias = "nope";
+        $alias = 'nope';
 
         $tester->execute([
-            "command" => $this->command->getName(),
-            "alias" => $alias,
+            'command' => $this->command->getName(),
+            'alias' => $alias,
         ]);
 
         $this->assertEquals(1, $tester->getStatusCode());
 
-        $expects = sprintf("Alias `%s` does not exist.", $alias);
+        $expects = sprintf('Alias `%s` does not exist.', $alias);
 
         $this->assertEquals($expects, trim($tester->getDisplay()));
     }

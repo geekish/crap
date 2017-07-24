@@ -26,7 +26,7 @@ class RequireCommandTest extends TestCase
         $crap = $container->get(Crap::class);
         $crap->add(new RequireCommand($helper));
 
-        $command = $crap->find("require");
+        $command = $crap->find('require');
 
         $this->tester = new CommandTester($command);
     }
@@ -38,8 +38,8 @@ class RequireCommandTest extends TestCase
         $this->expectException(CrapException::class);
 
         $tester->execute([
-            "command" => "require",
-            "aliases" => ["doesnotexist"]
+            'command' => 'require',
+            'aliases' => ['doesnotexist']
         ]);
 
         $this->assertEquals(1, $tester->getStatusCode());

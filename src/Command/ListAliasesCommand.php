@@ -16,8 +16,8 @@ final class ListAliasesCommand extends BaseCommand
      */
     protected function configure()
     {
-        $this->setName("aliases");
-        $this->setDescription("List currently defined aliases");
+        $this->setName('aliases');
+        $this->setDescription('List currently defined aliases');
     }
 
     /**
@@ -29,13 +29,13 @@ final class ListAliasesCommand extends BaseCommand
         $aliases = $this->helper->getAliases();
 
         if (count($aliases) > 0) {
-            $pad = max(array_map("strlen", $aliases)) + 3;
+            $pad = max(array_map('strlen', $aliases)) + 3;
 
             foreach ($aliases as $alias) {
                 $package = $this->helper->getAlias($alias);
                 $output->writeln(sprintf(
-                    "<comment>%s</comment> %s",
-                    str_pad($alias, $pad, " "),
+                    '<comment>%s</comment> %s',
+                    str_pad($alias, $pad, ' '),
                     $package
                 ));
             }
@@ -43,7 +43,7 @@ final class ListAliasesCommand extends BaseCommand
             return 0;
         }
 
-        $output->writeln("<comment>No aliases defined.</comment>");
+        $output->writeln('<comment>No aliases defined.</comment>');
 
         return 0;
     }

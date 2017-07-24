@@ -18,9 +18,9 @@ final class RemoveCommand extends BaseComposerCommand
      */
     protected function configure()
     {
-        $this->setName("remove");
-        $this->setDescription("Gets package name and version by alias, calls `composer remove`");
-        $this->addArgument("aliases", InputArgument::IS_ARRAY | InputArgument::REQUIRED, "Package aliases");
+        $this->setName('remove');
+        $this->setDescription('Gets package name and version by alias, calls `composer remove`');
+        $this->addArgument('aliases', InputArgument::IS_ARRAY | InputArgument::REQUIRED, 'Package aliases');
 
         $command = new ComposerRemoveCommand;
 
@@ -35,13 +35,13 @@ final class RemoveCommand extends BaseComposerCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $packages = $this->helper->parseArguments($input->getArgument("aliases"), true);
+        $packages = $this->helper->parseArguments($input->getArgument('aliases'), true);
 
         $options = $this->getOptions($input, $output->isDecorated());
-        $helper = $this->getHelper("process");
-        $process = $this->createProcess("remove", $packages, $options);
+        $helper = $this->getHelper('process');
+        $process = $this->createProcess('remove', $packages, $options);
 
-        $helper->run($output, $process, "Command failed.", function ($type, $data) use ($output) {
+        $helper->run($output, $process, 'Command failed.', function ($type, $data) use ($output) {
             $output->write($data, false);
         });
 

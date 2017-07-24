@@ -34,7 +34,7 @@ abstract class BaseComposerCommand extends BaseCommand
         }
 
         if ($decorated) {
-            $options[] = "ansi";
+            $options[] = 'ansi';
         }
 
         return $options;
@@ -57,7 +57,7 @@ abstract class BaseComposerCommand extends BaseCommand
 
         if (count($options) > 0) {
             $options = array_map(function ($value) {
-                return str_pad($value, strlen($value) + 2, "-", STR_PAD_LEFT);
+                return str_pad($value, strlen($value) + 2, '-', STR_PAD_LEFT);
             }, $options);
 
             array_push($arguments, ...$options);
@@ -66,7 +66,7 @@ abstract class BaseComposerCommand extends BaseCommand
         array_push($arguments, ...$packages);
 
         return (new ProcessBuilder)
-            ->setPrefix("composer")
+            ->setPrefix('composer')
             ->setArguments($arguments)
             ->setTimeout(null)
             ->getProcess();

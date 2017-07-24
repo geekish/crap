@@ -29,7 +29,7 @@ class InfoCommandTest extends TestCase
         $crap = $container->get(Crap::class);
         $crap->add(new InfoCommand($helper));
 
-        $command = $crap->find("info");
+        $command = $crap->find('info');
 
         $this->helper = $helper;
         $this->command = $command;
@@ -39,17 +39,17 @@ class InfoCommandTest extends TestCase
     {
         $tester = new CommandTester($this->command);
 
-        $alias = "phpunit";
+        $alias = 'phpunit';
         $package = $this->helper->getAlias($alias);
 
         $tester->execute([
-            "command" => $this->command->getName(),
-            "alias" => "phpunit",
+            'command' => $this->command->getName(),
+            'alias' => 'phpunit',
         ]);
 
         $this->assertEquals(0, $tester->getStatusCode());
 
-        $expects = sprintf("Alias `%s` is set to: %s", $alias, $package);
+        $expects = sprintf('Alias `%s` is set to: %s', $alias, $package);
 
         $this->assertEquals($expects, trim($tester->getDisplay()));
     }
@@ -61,7 +61,7 @@ class InfoCommandTest extends TestCase
         $tester = new CommandTester($this->command);
 
         $tester->execute([
-            "command" => $this->command->getName(),
+            'command' => $this->command->getName(),
         ]);
     }
 
@@ -70,8 +70,8 @@ class InfoCommandTest extends TestCase
         $tester = new CommandTester($this->command);
 
         $tester->execute([
-            "command" => $this->command->getName(),
-            "alias" => "nope",
+            'command' => $this->command->getName(),
+            'alias' => 'nope',
         ]);
 
         $this->assertEquals(1, $tester->getStatusCode());

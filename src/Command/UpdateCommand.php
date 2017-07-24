@@ -18,9 +18,9 @@ final class UpdateCommand extends BaseComposerCommand
      */
     protected function configure()
     {
-        $this->setName("update");
-        $this->setDescription("Gets package name and version by alias, calls `composer update`");
-        $this->addArgument("aliases", InputArgument::IS_ARRAY | InputArgument::REQUIRED, "Package aliases");
+        $this->setName('update');
+        $this->setDescription('Gets package name and version by alias, calls `composer update`');
+        $this->addArgument('aliases', InputArgument::IS_ARRAY | InputArgument::REQUIRED, 'Package aliases');
 
         $command = new ComposerUpdateCommand;
 
@@ -35,13 +35,13 @@ final class UpdateCommand extends BaseComposerCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $packages = $this->helper->parseArguments($input->getArgument("aliases"));
+        $packages = $this->helper->parseArguments($input->getArgument('aliases'));
 
         $options = $this->getOptions($input, $output->isDecorated());
-        $helper = $this->getHelper("process");
-        $process = $this->createProcess("update", $packages, $options);
+        $helper = $this->getHelper('process');
+        $process = $this->createProcess('update', $packages, $options);
 
-        $helper->run($output, $process, "Command failed.", function ($type, $data) use ($output) {
+        $helper->run($output, $process, 'Command failed.', function ($type, $data) use ($output) {
             $output->write($data, false);
         });
 

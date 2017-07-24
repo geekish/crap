@@ -17,9 +17,9 @@ final class InfoCommand extends BaseCommand
      */
     protected function configure()
     {
-        $this->setName("info");
-        $this->setDescription("Get a single alias.");
-        $this->addArgument("alias", InputArgument::REQUIRED, "Package alias");
+        $this->setName('info');
+        $this->setDescription('Get a single alias.');
+        $this->addArgument('alias', InputArgument::REQUIRED, 'Package alias');
     }
 
     /**
@@ -27,11 +27,11 @@ final class InfoCommand extends BaseCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $alias = $input->getArgument("alias");
+        $alias = $input->getArgument('alias');
 
         if (!$this->helper->hasAlias($alias)) {
             $output->writeln(sprintf(
-                "<success>Alias `%s` does not exist.</success>",
+                '<success>Alias `%s` does not exist.</success>',
                 $alias
             ));
 
@@ -40,7 +40,7 @@ final class InfoCommand extends BaseCommand
 
         $package = $this->helper->getAlias($alias);
 
-        $output->writeln(sprintf("Alias `%s` is set to: <comment>%s</comment>", $alias, $package));
+        $output->writeln(sprintf('Alias `%s` is set to: <comment>%s</comment>', $alias, $package));
 
         return 0;
     }

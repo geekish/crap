@@ -31,7 +31,7 @@ class AliasCommandTest extends TestCase
         $crap = $container->get(Crap::class);
         $crap->add(new AliasCommand($helper));
 
-        $command = $crap->find("alias");
+        $command = $crap->find('alias');
 
         $this->helper = $helper;
         $this->command = $command;
@@ -44,7 +44,7 @@ class AliasCommandTest extends TestCase
         $tester = new CommandTester($this->command);
 
         $tester->execute([
-            "command" => $this->command->getName(),
+            'command' => $this->command->getName(),
         ]);
     }
 
@@ -55,9 +55,9 @@ class AliasCommandTest extends TestCase
         $this->expectException(CrapException::class);
 
         $tester->execute([
-            "command" => $this->command->getName(),
-            "alias" => "InVaLiDaLiAs",
-            "package" => "phpunit/phpunit"
+            'command' => $this->command->getName(),
+            'alias' => 'InVaLiDaLiAs',
+            'package' => 'phpunit/phpunit'
         ]);
 
         $this->assertEquals(1, $tester->getStatusCode());
@@ -70,9 +70,9 @@ class AliasCommandTest extends TestCase
         $this->expectException(CrapException::class);
 
         $tester->execute([
-            "command" => $this->command->getName(),
-            "alias" => "validalias",
-            "package" => "InVaLiDpAcKaGe"
+            'command' => $this->command->getName(),
+            'alias' => 'validalias',
+            'package' => 'InVaLiDpAcKaGe'
         ]);
 
         $this->assertEquals(1, $tester->getStatusCode());
@@ -80,8 +80,8 @@ class AliasCommandTest extends TestCase
 
     public function testInteractMissingAlias()
     {
-        $alias = "phpunit";
-        $package = "phpunit/phpunit";
+        $alias = 'phpunit';
+        $package = 'phpunit/phpunit';
 
         $question = $this->getMockBuilder(QuestionHelper::class)
             ->setMethods(['ask'])
@@ -92,27 +92,27 @@ class AliasCommandTest extends TestCase
             ->will($this->returnValue($alias));
 
         $command = $this->command;
-        $command->getHelperSet()->set($question, "question");
+        $command->getHelperSet()->set($question, 'question');
 
         $tester = new CommandTester($command);
 
         $tester->execute([
-            "command" => $this->command->getName(),
-            "alias" => $package,
-            "package" => null,
-            "--dry-run" => true,
+            'command' => $this->command->getName(),
+            'alias' => $package,
+            'package' => null,
+            '--dry-run' => true,
         ], [
-            "interactive" => true,
+            'interactive' => true,
         ]);
 
         $messages = explode("\n", trim($tester->getDisplay()));
 
-        $expects = "You provided the package but no alias!";
+        $expects = 'You provided the package but no alias!';
 
         $this->assertEquals($expects, $messages[0]);
 
         $expects = sprintf(
-            "<success>Alias `%s` to package `%s` successfully added.</success>",
+            '<success>Alias `%s` to package `%s` successfully added.</success>',
             $alias,
             $package
         );
@@ -122,8 +122,8 @@ class AliasCommandTest extends TestCase
 
     public function testInteractMissingPackage()
     {
-        $alias = "phpunit";
-        $package = "phpunit/phpunit";
+        $alias = 'phpunit';
+        $package = 'phpunit/phpunit';
 
         $question = $this->getMockBuilder(QuestionHelper::class)
             ->setMethods(['ask'])
@@ -134,27 +134,27 @@ class AliasCommandTest extends TestCase
             ->will($this->returnValue($package));
 
         $command = $this->command;
-        $command->getHelperSet()->set($question, "question");
+        $command->getHelperSet()->set($question, 'question');
 
         $tester = new CommandTester($command);
 
         $tester->execute([
-            "command" => $this->command->getName(),
-            "alias" => $alias,
-            "package" => null,
-            "--dry-run" => true,
+            'command' => $this->command->getName(),
+            'alias' => $alias,
+            'package' => null,
+            '--dry-run' => true,
         ], [
-            "interactive" => true,
+            'interactive' => true,
         ]);
 
         $messages = explode("\n", trim($tester->getDisplay()));
 
-        $expects = "You provided the alias but no package!";
+        $expects = 'You provided the alias but no package!';
 
         $this->assertEquals($expects, $messages[0]);
 
         $expects = sprintf(
-            "<success>Alias `%s` to package `%s` successfully added.</success>",
+            '<success>Alias `%s` to package `%s` successfully added.</success>',
             $alias,
             $package
         );
@@ -164,8 +164,8 @@ class AliasCommandTest extends TestCase
 
     public function testInteractSwappedArguments()
     {
-        $alias = "phpunit";
-        $package = "phpunit/phpunit";
+        $alias = 'phpunit';
+        $package = 'phpunit/phpunit';
 
         $question = $this->getMockBuilder(QuestionHelper::class)
             ->setMethods(['ask'])
@@ -176,27 +176,27 @@ class AliasCommandTest extends TestCase
             ->will($this->returnValue(true));
 
         $command = $this->command;
-        $command->getHelperSet()->set($question, "question");
+        $command->getHelperSet()->set($question, 'question');
 
         $tester = new CommandTester($command);
 
         $tester->execute([
-            "command" => $this->command->getName(),
-            "alias" => $package,
-            "package" => $alias,
-            "--dry-run" => true,
+            'command' => $this->command->getName(),
+            'alias' => $package,
+            'package' => $alias,
+            '--dry-run' => true,
         ], [
-            "interactive" => true,
+            'interactive' => true,
         ]);
 
         $messages = explode("\n", trim($tester->getDisplay()));
 
-        $expects = "It looks like you swapped the package and alias.";
+        $expects = 'It looks like you swapped the package and alias.';
 
         $this->assertEquals($expects, $messages[0]);
 
         $expects = sprintf(
-            "<success>Alias `%s` to package `%s` successfully added.</success>",
+            '<success>Alias `%s` to package `%s` successfully added.</success>',
             $alias,
             $package
         );
@@ -206,8 +206,8 @@ class AliasCommandTest extends TestCase
 
     public function testInteractAliasToExistingAlias()
     {
-        $alias = "foo";
-        $existing = "alias";
+        $alias = 'foo';
+        $existing = 'alias';
         $package = $this->helper->getAlias($existing);
 
         $question = $this->getMockBuilder(QuestionHelper::class)
@@ -219,27 +219,27 @@ class AliasCommandTest extends TestCase
             ->will($this->returnValue(true));
 
         $command = $this->command;
-        $command->getHelperSet()->set($question, "question");
+        $command->getHelperSet()->set($question, 'question');
 
         $tester = new CommandTester($command);
 
         $tester->execute([
-            "command" => $this->command->getName(),
-            "alias" => $alias,
-            "package" => $existing,
-            "--dry-run" => true,
+            'command' => $this->command->getName(),
+            'alias' => $alias,
+            'package' => $existing,
+            '--dry-run' => true,
         ], [
-            "interactive" => true,
+            'interactive' => true,
         ]);
 
         $messages = explode("\n", trim($tester->getDisplay()));
 
-        $expects = "You provided an existing alias instead of a package.";
+        $expects = 'You provided an existing alias instead of a package.';
 
         $this->assertEquals($expects, $messages[0]);
 
         $expects = sprintf(
-            "<success>Alias `%s` to package `%s` successfully added.</success>",
+            '<success>Alias `%s` to package `%s` successfully added.</success>',
             $alias,
             $package
         );
@@ -251,26 +251,26 @@ class AliasCommandTest extends TestCase
     {
         $tester = new CommandTester($this->command);
 
-        $alias = "alias";
-        $package = "package/package";
+        $alias = 'alias';
+        $package = 'package/package';
 
         $tester->execute([
-            "command" => $this->command->getName(),
-            "alias" => $alias,
-            "package" => $package
+            'command' => $this->command->getName(),
+            'alias' => $alias,
+            'package' => $package
         ]);
 
         $message = trim($tester->getDisplay());
-        $expects = sprintf("Alias `%s` to package `%s` already exists, silly.", $alias, $package);
+        $expects = sprintf('Alias `%s` to package `%s` already exists, silly.', $alias, $package);
 
         $this->assertEquals($expects, $message);
     }
 
     public function testExistingOverrideFalse()
     {
-        $alias = "alias";
-        $package = "package/newpackage";
-        $existing = "package/package";
+        $alias = 'alias';
+        $package = 'package/newpackage';
+        $existing = 'package/package';
 
         $question = $this->getMockBuilder(QuestionHelper::class)
             ->setMethods(['ask'])
@@ -281,28 +281,28 @@ class AliasCommandTest extends TestCase
             ->will($this->returnValue(false));
 
         $command = $this->command;
-        $command->getHelperSet()->set($question, "question");
+        $command->getHelperSet()->set($question, 'question');
 
         $tester = new CommandTester($command);
 
         $tester->execute([
-            "command" => $command->getName(),
-            "alias" => $alias,
-            "package" => $package,
-            "--dry-run" => true,
+            'command' => $command->getName(),
+            'alias' => $alias,
+            'package' => $package,
+            '--dry-run' => true,
         ]);
 
         $message = trim($tester->getDisplay());
-        $expects = sprintf("Alias `%s` exists and is set to `%s`.", $alias, $existing);
+        $expects = sprintf('Alias `%s` exists and is set to `%s`.', $alias, $existing);
 
         $this->assertEquals($expects, $message);
     }
 
     public function testExistingOverrideTrue()
     {
-        $alias = "alias";
-        $package = "package/newpackage";
-        $existing = "package/package";
+        $alias = 'alias';
+        $package = 'package/newpackage';
+        $existing = 'package/package';
 
         $question = $this->getMockBuilder(QuestionHelper::class)
             ->setMethods(['ask'])
@@ -313,24 +313,24 @@ class AliasCommandTest extends TestCase
             ->will($this->returnValue(true));
 
         $command = $this->command;
-        $command->getHelperSet()->set($question, "question");
+        $command->getHelperSet()->set($question, 'question');
 
         $tester = new CommandTester($command);
 
         $tester->execute([
-            "command" => $command->getName(),
-            "alias" => $alias,
-            "package" => $package,
-            "--dry-run" => true,
+            'command' => $command->getName(),
+            'alias' => $alias,
+            'package' => $package,
+            '--dry-run' => true,
         ]);
 
         $messages = explode("\n", $tester->getDisplay());
 
         $expects = sprintf(
-            "<success>Alias `%s` to package `%s` successfully %s.</success>",
+            '<success>Alias `%s` to package `%s` successfully %s.</success>',
             $alias,
             $package,
-            "updated"
+            'updated'
         );
 
         $this->assertEquals($expects, $messages[1]);
@@ -340,14 +340,14 @@ class AliasCommandTest extends TestCase
     {
         $tester = new CommandTester($this->command);
 
-        $alias = "foo";
-        $package = "bar/baz";
+        $alias = 'foo';
+        $package = 'bar/baz';
 
         $tester->execute([
-            "command" => $this->command->getName(),
-            "alias" => $alias,
-            "package" => $package,
-            "--dry-run" => false,
+            'command' => $this->command->getName(),
+            'alias' => $alias,
+            'package' => $package,
+            '--dry-run' => false,
         ]);
 
         $actual = $this->helper->getAlias($alias);

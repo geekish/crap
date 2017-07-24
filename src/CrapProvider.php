@@ -45,8 +45,8 @@ class CrapProvider implements ProviderInterface
         $factory->configure(
             ConsoleOutput::class,
             function (ConsoleOutput $output) {
-                $output->getFormatter()->setStyle("error", new OutputFormatterStyle("red", null, []));
-                $output->getFormatter()->setStyle("success", new OutputFormatterStyle("green", null, []));
+                $output->getFormatter()->setStyle('error', new OutputFormatterStyle('red', null, []));
+                $output->getFormatter()->setStyle('success', new OutputFormatterStyle('green', null, []));
                 return $output;
             }
         );
@@ -68,7 +68,7 @@ class CrapProvider implements ProviderInterface
         $factory->register(
             JsonFileStore::class,
             function () use ($composerHome) {
-                $file = sprintf("%s/%s", $composerHome, Crap::FILENAME);
+                $file = sprintf('%s/%s', $composerHome, Crap::FILENAME);
                 $flags = JsonFileStore::NO_SERIALIZE_STRINGS
                     | JsonFileStore::PRETTY_PRINT
                     | JsonFileStore::NO_ESCAPE_SLASH;

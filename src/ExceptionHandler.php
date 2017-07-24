@@ -38,7 +38,7 @@ class ExceptionHandler
      */
     public function __invoke($e, $exit = true)
     {
-        $this->output->writeln(sprintf("<error>%s</error>", $e->getMessage()));
+        $this->output->writeln(sprintf('<error>%s</error>', $e->getMessage()));
 
         return $exit ? exit(1) : 1;
     }

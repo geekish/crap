@@ -125,7 +125,7 @@ class CrapHelper
      */
     public function validateAlias($alias)
     {
-        return (bool) preg_match("{^[a-z0-9_.-]+$}", $alias);
+        return (bool) preg_match('{^[a-z0-9_.-]+$}', $alias);
     }
 
     /**
@@ -142,7 +142,7 @@ class CrapHelper
 
         list($package, $version) = $this->parsePackageToArray($input);
 
-        if (!preg_match("{^[a-z0-9_.-]+/[a-z0-9_.-]+$}", $package)) {
+        if (!preg_match('{^[a-z0-9_.-]+/[a-z0-9_.-]+$}', $package)) {
             return false;
         }
 
@@ -177,7 +177,7 @@ class CrapHelper
             list($alias, $argVersion) = $this->parsePackageToArray($arg);
 
             if (!$this->hasAlias($alias)) {
-                throw CrapException::create("No record found for alias `%s`.", $alias);
+                throw CrapException::create('No record found for alias `%s`.', $alias);
             }
 
             list($package, $packageVersion) = $this->parsePackageToArray($this->getAlias($alias));
