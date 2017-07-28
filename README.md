@@ -18,7 +18,7 @@ PHP 5.6+ or 7.0+ required.
 Because using multiple global Composer packages can create dependency conflicts, I recommend using [`consolidation/cgr`](//github.com/consolidation/cgr) over `composer global require`:
 
 ``` bash
-cgr --stability dev geekish/crap
+cgr geekish/crap
 ```
 
 If you _don't_ mind descending into global dependency hell:
