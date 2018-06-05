@@ -6,7 +6,7 @@ All notable changes to `geekish/crap` will be documented in this file and follow
 
 ### Changed
 
-- Nothing; stable version bump
+- Multiple alias arguments now supported in `unalias` command.
 
 ## 1.0.0 - 2017-02-15
 
