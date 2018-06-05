@@ -1,0 +1,11 @@
+{
+    "laravel52": "laravel/framework:5.2.*",
+    "laravel53": "laravel/framework:5.3.*",
+    "laravel54": "laravel/framework:5.4.*",
+    "laravel55": "laravel/framework:5.5.*",
+    "laravel56": "laravel/framework:5.6.*",
+    "laravel": "laravel/framework",
+    "phpunit5": "phpunit/phpunit:^5.0",
+    "phpunit6": "phpunit/phpunit:^6.0",
+    "phpunit": "phpunit/phpunit:^7.0"
+}

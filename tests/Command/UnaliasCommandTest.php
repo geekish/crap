@@ -45,7 +45,7 @@ class UnaliasCommandTest extends TestCase
 
         $tester->execute([
             'command' => $this->command->getName(),
-            'alias' => $alias,
+            'alias' => [$alias],
             '--dry-run' => false,
         ]);
 
@@ -60,13 +60,35 @@ class UnaliasCommandTest extends TestCase
 
         $tester->execute([
             'command' => $this->command->getName(),
-            'alias' => $alias,
+            'alias' => [$alias],
         ]);
 
-        $this->assertEquals(1, $tester->getStatusCode());
-
-        $expects = sprintf('Alias `%s` does not exist.', $alias);
+        $expects = sprintf('Alias `%s` does not exist. Skipping.', $alias);
 
         $this->assertEquals($expects, trim($tester->getDisplay()));
+    }
+
+    public function testManyAliases()
+    {
+        $file = $this->createFileStore($this->manyFile);
+        $this->helper->setFile($file);
+
+        $tester = new CommandTester($this->command);
+
+        $aliases = ['laravel52', 'laravel53', 'phpunit5'];
+
+        $tester->execute([
+            'command' => $this->command->getName(),
+            'alias' => $aliases,
+        ]);
+
+        $output = explode("\n", trim($tester->getDisplay()));
+
+        foreach ($aliases as $index => $alias) {
+            $expects = sprintf('<success>Alias `%s` successfully removed.</success>', $alias);
+
+            $this->assertFalse($this->helper->hasAlias($alias));
+            $this->assertEquals($expects, $output[$index]);
+        }
     }
 }
