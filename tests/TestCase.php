@@ -15,6 +15,7 @@ abstract class TestCase extends BaseTestCase
     protected $readFile = __DIR__ . '/mock/read.json';
     protected $writeFile = __DIR__ . '/mock/write.json';
     protected $setFile = __DIR__ . '/mock/meow.json';
+    protected $manyFile = __DIR__ . '/mock/many.json';
 
     /**
      * Factory method for creating Container for testing

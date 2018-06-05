@@ -20,7 +20,7 @@ final class UnaliasCommand extends BaseCommand
     {
         $this->setName('unalias');
         $this->setDescription('Unset an existing crap alias.');
-        $this->addArgument('alias', InputArgument::REQUIRED, 'Package alias');
+        $this->addArgument('alias', InputArgument::IS_ARRAY | InputArgument::REQUIRED, 'Package alias(es)');
         $this->addOption(
             'dry-run',
             null,
@@ -34,9 +34,17 @@ final class UnaliasCommand extends BaseCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $alias = $input->getArgument('alias');
+        $aliases = $input->getArgument('alias');
 
-        if ($this->helper->hasAlias($alias)) {
+        foreach ($aliases as $alias) {
+            if (!$this->helper->hasAlias($alias)) {
+                $output->writeln(sprintf(
+                    '<comment>Alias `%s` does not exist. Skipping.</comment>',
+                    $alias
+                ));
+                continue;
+            }
+
             if ($input->getOption('dry-run') !== true) {
                 $this->helper->unsetAlias($alias);
             }
@@ -45,15 +53,8 @@ final class UnaliasCommand extends BaseCommand
                 '<success>Alias `%s` successfully removed.</success>',
                 $alias
             ));
-
-            return 0;
         }
 
-        $output->writeln(sprintf(
-            '<comment>Alias `%s` does not exist.</comment>',
-            $alias
-        ));
-
-        return 1;
+        return 0;
     }
 }
