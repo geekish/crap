@@ -87,6 +87,7 @@ class CrapProvider implements ProviderInterface
                     new Command\RequireCommand($helper),
                     new Command\UpdateCommand($helper),
                     new Command\RemoveCommand($helper),
+                    new Command\ProjectCommand($helper),
                 ]);
                 return $crap;
             }

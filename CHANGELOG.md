@@ -2,6 +2,12 @@
 
 All notable changes to `geekish/crap` will be documented in this file and follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## 1.1.0 - 2018-06-13
+
+### Added
+
+- New command `project`; proxy to `composer create-project`.
+
 ## 1.0.1 - 2018-06-05
 
 ### Changed
