@@ -59,7 +59,7 @@ These commands simply find your aliases, and call the Composer commands with the
 If you provided a version constraint when defining your alias, `crap` will use this by default.
 You may provide a version constraint on the require and update commands; this will override any default.
 
-The commands `require`, `update`, and `remove` all accept the same options/flags as the Composer commands that they call.
+The commands `project`, `require`, `update`, and `remove` all accept the same options/flags as the Composer commands that they call.
 For reference, see Composer's [Commands documentation][link-composer-docs].
 
 ## Why?
